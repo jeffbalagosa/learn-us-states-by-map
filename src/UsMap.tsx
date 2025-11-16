@@ -96,8 +96,8 @@ function UsMap() {
 
                 // fresh start of errors until next hint
                 setErrorsToHint(TOTAL_ERRORS_UNTIL_HINT);
-                // hint reveal sound
-                audio.play('complete');
+                // hint reveal sound — use distinct fail sound instead of completion
+                audio.play('fail');
             } else {
                 setErrorsToHint(errorsToHint - 1);
                 // wrong guess sound

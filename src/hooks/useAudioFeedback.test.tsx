@@ -35,6 +35,8 @@ test('play restart clip does not throw', async () => {
     useEffect(() => {
       (async () => {
         await play('restart');
+        // also ensure fail clip can be invoked and uses fallback if buffer not available
+        await play('fail');
       })();
     }, [play]);
     return <div data-testid="playtest">ok</div>;

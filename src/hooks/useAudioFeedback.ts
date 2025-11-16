@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-type ClipName = 'success' | 'error' | 'complete' | 'restart';
+type ClipName = 'success' | 'error' | 'complete' | 'restart' | 'fail';
 
 const CLIP_PATHS: Record<ClipName, string> = {
   success: '/audio/success.wav',
   error: '/audio/error.wav',
   complete: '/audio/complete.wav',
   restart: '/audio/restart.mp3',
+  fail: '/audio/fail-trumpet.mp3',
 };
 
 const MAX_VOLUME = 0.4;
@@ -18,8 +19,9 @@ export default function useAudioFeedback() {
     error: null,
     complete: null,
     restart: null,
+    fail: null,
   });
-  const playingRef = useRef<Record<ClipName, boolean>>({ success: false, error: false, complete: false, restart: false });
+  const playingRef = useRef<Record<ClipName, boolean>>({ success: false, error: false, complete: false, restart: false, fail: false });
 
   // Create/reuse audio context on first user gesture
   const ensureAudioContext = useCallback(async () => {
@@ -65,6 +67,7 @@ export default function useAudioFeedback() {
       preloadClip('error');
       preloadClip('complete');
       preloadClip('restart');
+      preloadClip('fail');
     };
 
     window.addEventListener('pointerdown', onFirstInteraction);
@@ -102,7 +105,7 @@ export default function useAudioFeedback() {
             src.disconnect();
             gain.disconnect();
           };
-        } else {
+          } else {
           // fallback: simple oscillator burst
           const d = 0.35; // duration
           const gain = ctx.createGain();
@@ -116,6 +119,10 @@ export default function useAudioFeedback() {
           } else if (name === 'error') {
             osc.frequency.value = 220;
             osc.type = 'sine';
+          } else if (name === 'fail') {
+            // distinctive 'trumpet' fallback — sawtooth + mid frequency
+            osc.frequency.value = 330;
+            osc.type = 'sawtooth';
           } else if (name === 'restart') {
             // distinct reset cue from complete
             osc.frequency.value = 660;

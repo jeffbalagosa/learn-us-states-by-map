@@ -38,7 +38,7 @@
 None - all tasks can be completed sequentially.
 
 ## Validation
-- [ ] README.md exists in project root
-- [ ] File renders correctly in GitHub/GitLab
-- [ ] Setup instructions work for a fresh clone
-- [ ] All sections are present and clearly written
+- [x] README.md exists in project root
+- [x] File renders correctly in GitHub/GitLab
+- [x] Setup instructions work for a fresh clone
+- [x] All sections are present and clearly written

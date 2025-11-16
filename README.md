@@ -15,7 +15,7 @@ A small interactive quiz app that teaches and tests US state geography by identi
 ## Getting Started
 
 ### Prerequisites
-- Node.js and npm (LTS recommended). The repo contains some compatibility notes for newer Node versions; test with your environment and set Node accordingly.
+- Node.js and npm (LTS recommended)
 
 ### Install
 
@@ -26,35 +26,52 @@ git clone https://github.com/jeffbalagosa/learn-us-states-by-map.git
 cd learn-us-states-by-map
 ```
 
-Install dependencies (the project may require `--legacy-peer-deps` on some environments):
+Install dependencies:
 
 ```bash
-npm install --legacy-peer-deps
+npm install
 ```
 
 ### Run the app
 
+Development server:
 ```bash
-npm start
+npm run dev
 ```
 
-This starts the development server (Create React App). Open http://localhost:3000 in your browser to use the quiz.
+This starts the Vite development server. Open http://localhost:5173 in your browser to use the quiz.
 
-### Notes about Node v25
-If you run into module resolution or ESM issues when using Node 25, try using Node 18/20 or a Node version manager (nvm) to switch versions; the app was developed against modern LTS versions.
+Build for production:
+```bash
+npm run build
+```
+
+The production build will be output to the `dist/` directory.
+
+Preview production build:
+```bash
+npm run preview
+```
+
+Run tests:
+```bash
+npm run test
+```
 
 ## Tech Stack
 - React (TypeScript)
+- Vite
+- Vitest
 - react-simple-maps
 - d3-geo
-- Create React App setup with TypeScript
 
 For precise dependency versions, see `package.json`.
 
 ## Project Structure
 - `src/` — application source and React components (UsMap, UsState, etc.)
-- `public/` — static assets and `index.html`
+- `public/` — static assets
 - `data/` — Geo/state data (e.g., `allStates.json`)
+- `dist/` — production build output (generated)
 - `openspec/` — design documentation and change proposals
 
 ## Audio feedback

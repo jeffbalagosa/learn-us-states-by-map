@@ -7,7 +7,10 @@
       "Bash(npx openspec:*)",
       "Bash(echo:*)",
       "Bash(openspec list:*)",
-      "Bash(openspec validate:*)"
+      "Bash(openspec validate:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []

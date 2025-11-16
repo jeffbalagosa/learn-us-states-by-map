@@ -1,4 +1,3 @@
-import React from 'react';
 import UsMap from './UsMap';
 import './App.css';
 

@@ -1,14 +1,15 @@
-import React from 'react';
+import { createElement } from 'react';
 import { render } from '@testing-library/react';
+import { test, expect } from 'vitest';
 import useAudioFeedback from './useAudioFeedback';
 
 function TestComponent() {
   const { play } = useAudioFeedback();
-  // Use `React.createElement` to avoid JSX syntax in a .ts file
-  return React.createElement('div', { 'data-testid': 'hook' }, typeof play);
+  // Use `createElement` to avoid JSX syntax in a .ts file
+  return createElement('div', { 'data-testid': 'hook' }, typeof play);
 }
 
 test('useAudioFeedback returns a play function', () => {
-  const { getByTestId } = render(React.createElement(TestComponent));
+  const { getByTestId } = render(createElement(TestComponent));
   expect(getByTestId('hook').textContent).toBe('function');
 });

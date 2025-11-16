@@ -2,6 +2,9 @@
 
 A small interactive quiz app that teaches and tests US state geography by identifying states on an SVG map.
 
+## Attribution
+- This project is a fork of [TomHerman11/us-states-quiz](https://github.com/TomHerman11/us-states-quiz). Thanks to the original author for the very cool foundational implementation and assets!
+
 ## Features
 - Interactive state selection on a US map.
 - Timer and scoring for quizzes.

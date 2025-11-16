@@ -1,3 +1,4 @@
+```markdown
 ## Tasks
 - [x] 1. Update `package.json` to drop `react-scripts`, add Vite/Vitest dependencies, and replace the CRA `start/build/test` scripts with `dev/build/preview/test`.
 - [x] 2. Adjust `tsconfig.json` (and any auxiliary tsconfig files) so Vite's defaults work: set `jsx` to `react-jsx`, update `module`/`target`, and ensure the `types` include `vite/client`.
@@ -7,3 +8,5 @@
 - [x] 6. Remove CRA-only artifacts (`src/react-app-env.d.ts`, `web-vitals`, `reportWebVitals`, unused manifests, `NODE_OPTIONS` hacks) and update `.gitignore` to ignore `dist/` instead of `build/`.
 - [x] 7. Refresh docs: update README setup instructions to use `npm run dev/build/test`, note the new output folder, and delete the obsolete `deploy.sh`.
 - [x] 8. Install dependencies (`npm install`) and run `npm run dev`, `npm run build`, and `npm run test` to confirm the migration succeeded end-to-end.
+
+```

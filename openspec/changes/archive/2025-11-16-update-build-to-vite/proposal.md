@@ -1,3 +1,4 @@
+```markdown
 # Proposal: Update build to Vite
 
 ## Why
@@ -17,3 +18,5 @@
 - Test runner switches from jest/react-scripts to Vitest
 - GitHub Pages deploy script is removed until a future deployment workflow is needed
 - No user-facing feature changes; only tooling/build behavior should differ
+
+```

@@ -1,4 +1,8 @@
-## ADDED Requirements
+# build-tooling Specification
+
+## Purpose
+TBD - created by archiving change update-build-to-vite. Update Purpose after archive.
+## Requirements
 ### Requirement: Vite dev and production build
 The frontend MUST use Vite with the React plugin so the dev server and production build share a single configuration and emit assets suited for local or static hosting.
 
@@ -22,3 +26,4 @@ The project MUST use Vitest so the existing React Testing Library suites continu
 - **WHEN** a developer runs `npm run test`
 - **THEN** Vitest runs in watch mode by default
 - **AND** React Testing Library assertions still succeed because jsdom and `@testing-library/jest-dom` are configured inside Vitest.
+

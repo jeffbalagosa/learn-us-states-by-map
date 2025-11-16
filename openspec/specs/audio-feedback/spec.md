@@ -9,8 +9,8 @@ The application MUST reward every correct state selection with a short, smooth t
 #### Scenario: Correct guess plays a subtle chime
 - **GIVEN** the quiz is in progress and the user selects the highlighted target state
 - **WHEN** the state name matches the current quiz prompt
-- **THEN** a single "success" audio clip plays within 150 ms of the click
-- **AND** the clip length is = 750 ms with at least a 40 ms fade-in/out so it sounds smooth and not jarring
+- **THEN** a single "success" audio clip from `/audio/success.mp3` plays within 150 ms of the click
+- **AND** the clip length is ≤ 750 ms with at least a 40 ms fade-in/out so it sounds smooth and not jarring
 
 ### Requirement: Soft error cue on incorrect guesses
 Wrong guesses MUST trigger a muted corrective sound so players know the tap failed while keeping the experience calm.
@@ -18,7 +18,7 @@ Wrong guesses MUST trigger a muted corrective sound so players know the tap fail
 #### Scenario: Incorrect guess plays a low-volume tone
 - **GIVEN** the quiz is waiting for the correct answer
 - **WHEN** a user clicks a state that does not match the prompt and the automatic hint threshold has not been reached
-- **THEN** the app plays a single "error" clip = 500 ms at no more than 40% volume
+- **THEN** the app plays a single "error" clip from `/audio/error.mp3` that is ≤ 500 ms at no more than 40% volume
 - **AND** repeating mistakes restart the clip rather than layering multiple loud sounds
 
 ### Requirement: Ambient cues for hints and completion
@@ -63,4 +63,21 @@ The audio feedback system MUST support a dedicated 'restart' clip type that play
 - **THEN** the hook loads and plays `/audio/restart.mp3`
 - **AND** the clip follows the same preloading and playback smoothness requirements as other clip types
 - **AND** overlapping restart playback is prevented (only one restart sound plays at a time)
+
+### Requirement: Failure audio cue on three-strike threshold
+The quiz MUST play a distinct fail sound when the three-strike threshold is reached and the correct answer is automatically highlighted, so players understand this is a failure event rather than a success.
+
+#### Scenario: Three incorrect guesses trigger fail sound
+- **GIVEN** the player has made two incorrect guesses for the current state
+- **WHEN** the player makes a third incorrect guess and reaches the automatic hint threshold
+- **THEN** the app plays the "fail" audio clip using `public/audio/fail-trumpet.mp3`
+- **AND** the fail sound is distinct from the completion sound to clearly signal a failure event rather than success
+- **AND** the state is automatically highlighted as part of the hint mechanism
+
+#### Scenario: Fail clip loads with other audio assets
+- **GIVEN** the audio feedback hook is initialized
+- **WHEN** the first user interaction triggers audio preloading
+- **THEN** the fail clip at `/audio/fail-trumpet.mp3` is preloaded along with other audio clips
+- **AND** the fail clip follows the same preloading and playback smoothness requirements as other clip types
+- **AND** overlapping fail playback is prevented (only one fail sound plays at a time)
 

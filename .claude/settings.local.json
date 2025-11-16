@@ -3,7 +3,11 @@
     "allow": [
       "Bash(taskkill //F //PID 3860)",
       "Bash(npm start)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npx openspec:*)",
+      "Bash(echo:*)",
+      "Bash(openspec list:*)",
+      "Bash(openspec validate:*)"
     ],
     "deny": [],
     "ask": []

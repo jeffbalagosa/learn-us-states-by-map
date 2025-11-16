@@ -3,7 +3,7 @@
 # abort on errors
 set -e
 
-env PUBLIC_URL=https://tomherman11.github.io/us-states-quiz yarn build
+env PUBLIC_URL=https://jeff.balagosa.github.io/us-states-quiz yarn build
 
 cd build
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useAudioFeedback from './hooks/useAudioFeedback';
 import _ from 'lodash';
 import {
     ComposableMap,
@@ -35,6 +36,9 @@ function UsMap() {
         };
     }, [quizEnded]);
 
+    // audio feedback hook
+    const audio = useAudioFeedback();
+
     // on restart:
     const restartQuiz = () => {
         setQuiz(Utils.getNewShuffledQuiz());
@@ -46,6 +50,8 @@ function UsMap() {
         // restart timer:
         setStartTime(new Date());
         setCurrTime(new Date());
+        // restart sound for comfort
+        audio.play('complete');
     }
 
     const moveToNextState = (stateName: string, showName: boolean, hintUsed: boolean) => {
@@ -77,6 +83,9 @@ function UsMap() {
         if (stateName === quiz[quizIndex].stateName) {
             moveToNextState(stateName, true, false);
 
+            // positive reinforcement
+            audio.play('success');
+
             //reset errors to hint:
             setErrorsToHint(TOTAL_ERRORS_UNTIL_HINT);
         } else {
@@ -87,8 +96,12 @@ function UsMap() {
 
                 // fresh start of errors until next hint
                 setErrorsToHint(TOTAL_ERRORS_UNTIL_HINT);
+                // hint reveal sound
+                audio.play('complete');
             } else {
                 setErrorsToHint(errorsToHint - 1);
+                // wrong guess sound
+                audio.play('error');
             }
         }
     }

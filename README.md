@@ -57,6 +57,16 @@ For precise dependency versions, see `package.json`.
 - `data/` — Geo/state data (e.g., `allStates.json`)
 - `openspec/` — design documentation and change proposals
 
+## Audio feedback
+
+- This app includes an audio feedback hook that preloads short audio clips and provides a polite WebAudio fallback when audio asset files are not present.
+- Place audio files (1s or less) in `public/audio/` named `success.wav`, `error.wav`, and `complete.wav` to override the fallback oscillator tones.
+- The hook preloads the clips after the first user gesture, clamps playback to a max volume of 0.4, and prevents overlapping plays of the same clip.
+
+Manual QA
+
+- Test on at least one desktop and one mobile browser to verify the clips play smoothly and are not too loud.
+
 ## Contributing
 Contributions are welcome — open an issue or submit a pull request for small improvements. Keep changes focused and add tests or documentation where relevant.
 

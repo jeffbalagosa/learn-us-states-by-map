@@ -3,8 +3,8 @@ import { useCallback, useEffect, useRef } from 'react';
 type ClipName = 'success' | 'error' | 'complete' | 'restart' | 'fail';
 
 const CLIP_PATHS: Record<ClipName, string> = {
-  success: '/audio/success.wav',
-  error: '/audio/error.wav',
+  success: '/audio/success.mp3',
+  error: '/audio/error.mp3',
   complete: '/audio/complete.wav',
   restart: '/audio/restart.mp3',
   fail: '/audio/fail-trumpet.mp3',

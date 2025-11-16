@@ -1,8 +1,9 @@
-Please add three short, gentle audio clips here to enable audio feedback:
+Please add short, gentle audio clips here to enable audio feedback:
 
 - `success.wav` — short positive chime.
 - `error.wav` — short, soft negative tone.
 - `complete.wav` — short completion/hint sound.
+- `restart.mp3` — short audio to indicate the quiz has been restarted (semantic restart cue)
 
 Files should be < 1s each and normalized so they are not loud when played at max volume 0.4.
 

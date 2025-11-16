@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-type ClipName = 'success' | 'error' | 'complete';
+type ClipName = 'success' | 'error' | 'complete' | 'restart';
 
 const CLIP_PATHS: Record<ClipName, string> = {
   success: '/audio/success.wav',
   error: '/audio/error.wav',
   complete: '/audio/complete.wav',
+  restart: '/audio/restart.mp3',
 };
 
 const MAX_VOLUME = 0.4;
@@ -16,8 +17,9 @@ export default function useAudioFeedback() {
     success: null,
     error: null,
     complete: null,
+    restart: null,
   });
-  const playingRef = useRef<Record<ClipName, boolean>>({ success: false, error: false, complete: false });
+  const playingRef = useRef<Record<ClipName, boolean>>({ success: false, error: false, complete: false, restart: false });
 
   // Create/reuse audio context on first user gesture
   const ensureAudioContext = useCallback(async () => {
@@ -62,6 +64,7 @@ export default function useAudioFeedback() {
       preloadClip('success');
       preloadClip('error');
       preloadClip('complete');
+      preloadClip('restart');
     };
 
     window.addEventListener('pointerdown', onFirstInteraction);
@@ -112,6 +115,10 @@ export default function useAudioFeedback() {
             osc.type = 'sine';
           } else if (name === 'error') {
             osc.frequency.value = 220;
+            osc.type = 'sine';
+          } else if (name === 'restart') {
+            // distinct reset cue from complete
+            osc.frequency.value = 660;
             osc.type = 'sine';
           } else {
             osc.frequency.value = 440;

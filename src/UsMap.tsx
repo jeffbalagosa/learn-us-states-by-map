@@ -51,7 +51,7 @@ function UsMap() {
         setStartTime(new Date());
         setCurrTime(new Date());
         // restart sound for comfort
-        audio.play('complete');
+        audio.play('restart');
     }
 
     const moveToNextState = (stateName: string, showName: boolean, hintUsed: boolean) => {

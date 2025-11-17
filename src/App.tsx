@@ -7,12 +7,12 @@ function App() {
       <UsMap />
 
       <a
-        href="https://github.com/TomHerman11/us-states-quiz"
+        href="https://github.com/jeffbalagosa/learn-us-states-by-map"
         rel="noreferrer"
         target="_blank"
         className="Unselectable"
       >
-        https://github.com/TomHerman11/us-states-quiz
+        https://github.com/jeffbalagosa/learn-us-states-by-map
       </a>
     </div>
   );

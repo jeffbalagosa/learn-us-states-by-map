@@ -1,0 +1,15 @@
+# Node and build artifacts
+node_modules
+.vscode
+.env
+
+# Git
+.git
+.gitignore
+
+# Editor
+*.swp
+
+# Dockerfile and compose are small and we want them included; keep dist in context
+# but ignore sensitive or large files
+.DS_Store

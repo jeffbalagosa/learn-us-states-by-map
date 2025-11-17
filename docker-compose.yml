@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: learn-us-states-by-map:latest
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    # if you want to bind-mount local dist (for quick dev iteration), uncomment below:
+    # volumes:
+    #   - ./dist:/usr/share/nginx/html:ro

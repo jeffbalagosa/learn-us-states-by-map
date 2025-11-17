@@ -1,0 +1,2 @@
+# Optional: extra docker-related ignores
+docker-compose.override.yml
